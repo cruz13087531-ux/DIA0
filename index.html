@@ -141,7 +141,6 @@
             transition: transform 0.4s ease, z-index 0.2s ease 0.2s;
         }
 
-        /* Gran Sello de Corazón Latiente en el centro del sobre */
         .sello-corazon {
             position: absolute;
             z-index: 5;
@@ -179,7 +178,7 @@
             font-size: 28px;
         }
 
-        /* --- TARJETA PRINCIPAL (ESTILO PERGAMINO ROMÁNTICO REALZADO) --- */
+        /* --- TARJETA PRINCIPAL --- */
         .tarjeta-carta {
             background-color: #fffefb;
             background-image: radial-gradient(rgba(240, 200, 200, 0.2) 1.5px, transparent 0);
@@ -207,7 +206,6 @@
             transform: translateY(0);
         }
 
-        /* Esquinas ornamentales románticas */
         .decoracion-esquina {
             position: absolute;
             font-size: 26px;
@@ -236,7 +234,7 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
-        /* --- SISTEMA DE PESTAÑAS APASIONADAS --- */
+        /* --- SISTEMA DE PESTAÑAS --- */
         .contenedor-pestanas {
             display: flex;
             justify-content: center;
@@ -290,7 +288,6 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- BLOQUES DE TEXTO Y DETALLES INTERNOS --- */
         .bloque-texto {
             color: var(--color-texto);
             font-size: 17px;
@@ -323,17 +320,28 @@
             font-size: 20px;
         }
 
-        /* --- REPRODUCTOR DE MÚSICA DE ENSUEÑO --- */
+        /* --- REPRODUCTOR DE MÚSICA --- */
         .seccion-titulo-musica {
             font-family: 'Great Vibes', cursive;
             color: var(--color-guindo);
-            font-size: 42px;
-            margin: 50px 0 20px 0;
+            font-size: 44px;
+            margin: 50px 0 5px 0;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+        }
+
+        .subfrase-amor {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-rojo-pasion);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 25px;
+            font-style: italic;
+            letter-spacing: 0.5px;
         }
 
         .contenedor-musica {
@@ -395,6 +403,40 @@
             box-shadow: 0 10px 25px rgba(175, 34, 53, 0.45);
         }
 
+        /* --- SECCIÓN GALERÍA DE IMÁGENES --- */
+        .contenedor-galeria {
+            margin-top: 45px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .bloque-imagen {
+            background: #ffffff;
+            border: 1px solid rgba(223, 186, 107, 0.35);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .bloque-imagen img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+
+        .pie-imagen {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: #4a0d14;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
         .firma {
             font-family: 'Great Vibes', cursive;
             margin-top: 45px;
@@ -407,10 +449,8 @@
 </head>
 <body>
 
-    <!-- CAPA MÁGICA CON CORAZONES FLOTANTES -->
     <div class="corazones-fondo" id="corazones-fondo"></div>
 
-    <!-- CONTENEDOR DEL SOBRE DE DECLARACIÓN -->
     <div class="contenedor-sobre" id="contenedor-sobre">
         <div class="frase-sobre-superior">Una historia que comenzó en silencio...</div>
         <div class="sobre" id="sobre" onclick="abrirCarta()">
@@ -420,7 +460,6 @@
         </div>
     </div>
 
-    <!-- TARJETA PRINCIPAL (CARTA ROMÁNTICA) -->
     <div class="tarjeta-carta" id="tarjeta-carta">
         <span class="decoracion-esquina esquina-sup-izq">💖</span>
         <span class="decoracion-esquina esquina-sup-der">💖</span>
@@ -430,13 +469,11 @@
         <span class="corazon-principal">💖</span>
         <h1>Para Wendy</h1>
         
-        <!-- CONTROL DE DOS PESTAÑAS -->
         <div class="contenedor-pestanas">
             <button class="pestana-boton activa" onclick="cambiarPestana(event, 'tab-te-amo')">❤️ Te amo mucho</button>
             <button class="pestana-boton" onclick="cambiarPestana(event, 'tab-cronologia')">📜 Nuestra Cronología</button>
         </div>
 
-        <!-- ================= PESTAÑA 1: TE AMO MUCHO ================= -->
         <div id="tab-te-amo" class="contenido-pestana activa">
             <div class="bloque-actualizacion">Hola, Wendy.
 Antes de que empieces a leer todo esto, quiero decirte algo.
@@ -457,7 +494,6 @@ JAJAJAJAJA.</div>
             <div class="firma">Con todo mi amor, Leonardo</div>
         </div>
 
-        <!-- ================= PESTAÑA 2: NUESTRA CRONOLOGÍA ================= -->
         <div id="tab-cronologia" class="contenido-pestana">
             <div class="bloque-texto"><strong>DÍA 05 DE MAYO DE 2026</strong>
 Pues ese día realmente no pasó nada.
@@ -477,74 +513,44 @@ No porque no quisiera hablar contigo.
 Sino porque me daba miedo.
 Como ya te dije una vez, tenías una cara de emputada que imponía muchísimo. Tus ojos eran tan neutros que daban miedo. No transmitían si estabas feliz, seria o si estabas pensando cómo matar a alguien. JAJAJAJA.
 
-Cuando vi algunas fotos tuyas después de tu mensaje pensé:
-"Uy... qué miedo."
-Pero al mismo tiempo me pareció demasiado peculiar que alguien me escribiera justamente por mis gustos musicales.
-Eso despertó mi curiosidad.
-Y ahí apareció otro problema.
-No tenía idea de cómo responderte.
-Llevaba muchísimo tiempo solo, sin prácticamente ninguna interacción femenina.
-(Virgen).
-JAJAJAJA.
+...</div>
 
-Entonces no era que no quisiera hablar contigo...
-Era que literalmente no sabía cómo hacerlo.
-Además, estaba tan acostumbrado a estar solo que la idea de empezar a hablar con alguien me daba miedo.
-Pero hubo algo...
-Una corazonada.
-Y las pocas veces que les hago caso, normalmente no fallan.
-Así que me animé.
-Escribí lo que tenía que escribir.
-Y pensé:
-"Bueno... tal vez se vuelva mi amiga."
-(Aunque tú sabes perfectamente lo que pienso sobre eso. JAJAJA).
-
-Y aun así seguía dudando.
-Porque yo mismo decía:
-"¿Yo teniendo una amiga? No sé... no me veo. No estoy para darle atención a nadie."
-Pero esa corazonada pudo más.
-Y gracias a eso comenzamos a hablar el 13 de mayo.
-Aunque todavía tenía muchísimas dudas.
-Y así empezó lo que hoy es mi calvario...
-JAJAJAJA.
-No, mentira.
-
-Después me contaste parte de tu historia...
-Y yo estaba de:
-"ALV..."
-JAJAJAJA.
-Y en esas noches en las que nos hacíamos compañía, muchas veces tú me dabas las gracias por escucharte.
-Pero la verdad es que el agradecido era yo.
-Porque, aunque suene raro, esas noches también hicieron que yo dejara de sentirme tan solo.
-Me sentía acompañado.
-Y eso era algo que hacía muchísimo tiempo no me pasaba.
-Así que...
-Gracias.
-Gracias por escucharme.
-Gracias por dejarme escucharte.
-Y gracias por haberme acompañado en esas noches.
-De verdad...
-Muchas gracias.</div>
-
-            <!-- APARTADO DE CIERRE MUSICAL -->
-            <div class="seccion-titulo-musica">💝 Una carretera para el amor de mi vida... 💝</div>
+            <div class="seccion-titulo-musica">💖 Cancion que sentia en esos dias 💖</div>
+            <div class="subfrase-amor">para el amor de mi vida (porque wow no sabes que tan camote estoy de ti...)</div>
+            
             <div class="contenedor-musica">
                 <div class="titulo-musica">🎵 Una melodía guardada para ti</div>
-                <div class="dedicatoria-cancion">"Y esta canción me hace acordarme mucho de ti, porque me recuerda a cuando no sabía ni cómo responderte. Me daba miedo escribirte y aun así quería seguir conociéndote.
-Lo raro es que, mientras más te conocía, más ganas tenía de estar ahí para ti y ayudarte en lo que pudiera. Nunca pensé sentir algo así por alguien.
-Hasta ahora me cuesta creer lo camote que estoy de ti, pero si algo tengo claro es que todo lo que siento por ti siempre ha sido completamente sincero."</div>
+                <div class="dedicatoria-cancion">"Nuestra historia comenzó de la forma más inesperada y hermosa: por una canción de José Madero. 
+
+Esta canción en particular me hace acordarme muchísimo de ti, porque me transporta directo a esos días cuando no sabía ni cómo responderte. Me daba un miedo tremendo escribirte y, aun así, por dentro se me morían las ganas de seguir conociéndote. 
+
+Lo increíble es que, mientras más te conocía, más ganas me daban de estar ahí para ti, de cuidarte y ayudarte en lo que pudiera. Jamás en mi vida pensé llegar a sentir algo tan profundo por alguien. 
+
+Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, pero si de algo estoy completamente seguro, es de que todo lo que siento por ti siempre ha sido y será el amor más sincero de mi vida."</div>
                 
-                <audio id="audioNuevaCarta" src="cancion_nueva.mp3"></audio>
+                <audio id="audioNuevaCarta" src="canción9.mp3"></audio>
                 <button class="boton-reproductor" onclick="controlarAudio('audioNuevaCarta')">
                     <span id="icono-audioNuevaCarta">▶</span> &nbsp; Escuchar nuestra canción
                 </button>
             </div>
+
+            <div class="contenedor-galeria">
+                <div class="bloque-imagen">
+                    <img src="imagen3.jpg" alt="Recuerdo Especial 1">
+                    <div class="pie-imagen">"quierenos no ves que Conor y Yo estamos sufriendo, él ya siente que se va a quedar sin mamá"</div>
+                </div>
+
+                <div class="bloque-imagen">
+                    <img src="imagen4.jpg" alt="Recuerdo Especial 2">
+                    <div class="pie-imagen">"Por si realmente estas abandonando a Conor y tambien a mi, jajaj bueno no mucho mi persona"</div>
+                </div>
+            </div>
+
             <div class="firma">Con todo mi amor, Leonardo</div>
         </div>
     </div>
 
     <script>
-        // Generador automático de la lluvia de corazones romántica
         const fondo = document.getElementById('corazones-fondo');
         const simbolosCorazon = ['❤️', '💖', '💝', '💕', '✨'];
         
@@ -584,17 +590,34 @@ Hasta ahora me cuesta creer lo camote que estoy de ti, pero si algo tengo claro 
             evento.currentTarget.classList.add('activa');
         }
 
+        // CONTROLADOR DE AUDIO CON RANGO DE TIEMPO DEFINIDO (0:14 a 1:52)
         function controlarAudio(idAudio) {
             const audio = document.getElementById(idAudio);
             const icono = document.getElementById('icono-' + idAudio);
+            
+            const tiempoInicio = 14; // 0:14 en segundos
+            const tiempoFin = 112;   // 1:52 en segundos (60 + 52)
 
             if (audio.paused) {
+                // Si el audio está al inicio o fuera del rango asignado, lo posicionamos en 0:14
+                if (audio.currentTime < tiempoInicio || audio.currentTime >= tiempoFin) {
+                    audio.currentTime = tiempoInicio;
+                }
                 audio.play();
                 icono.innerText = '⏸';
             } else {
                 audio.pause();
                 icono.innerText = '▶';
             }
+
+            // Escuchamos el evento de actualización de tiempo para cortar en 1:52
+            audio.ontimeupdate = function() {
+                if (audio.currentTime >= tiempoFin) {
+                    audio.pause();
+                    audio.currentTime = tiempoInicio; // Reseteamos al punto inicial del bucle
+                    icono.innerText = '▶';
+                }
+            };
         }
     </script>
 </body>
