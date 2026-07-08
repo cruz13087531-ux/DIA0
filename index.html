@@ -137,7 +137,7 @@
             box-sizing: border-box;
         }
 
-        /* --- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO) --- */
+        /* --- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO CON LIRIOS) --- */
         .tarjeta-carta {
             background-color: #fffdfa;
             background-image: radial-gradient(rgba(240, 220, 220, 0.2) 1px, transparent 0);
@@ -156,12 +156,34 @@
             transform: translateY(30px);
             transition: opacity 0.7s ease, transform 0.7s ease;
             z-index: 1;
+            position: relative;
         }
 
         .tarjeta-carta.visible {
             display: block;
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* --- ADORNOS DE LIRIOS EN ESQUINAS --- */
+        .tarjeta-carta::after {
+            content: "⚜️";
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 24px;
+            opacity: 0.3;
+            color: var(--color-oro-sutil);
+        }
+
+        .tarjeta-carta::before {
+            content: "⚜️";
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 24px;
+            opacity: 0.3;
+            color: var(--color-oro-sutil);
         }
 
         .corazon {
@@ -181,9 +203,47 @@
         h1 {
             font-family: 'Great Vibes', cursive;
             color: #4a0d14;
-            font-size: 48px;
-            margin: 0 0 35px 0;
+            font-size: 52px;
+            margin: 0 0 10px 0;
             font-weight: 400;
+        }
+
+        /* --- SECCIÓN TITULO: NUESTRA CRONOLOGÍA --- */
+        .separador-cronologia {
+            margin: 40px 0 25px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .separador-cronologia h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #7a1c28;
+            font-size: 42px;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .linea-decorativa {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--color-oro-sutil), transparent);
+            flex-grow: 1;
+        }
+
+        .flor-lirio {
+            font-size: 22px;
+            color: var(--color-oro-sutil);
+            vertical-align: middle;
+            display: inline-block;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+            100% { transform: translateY(0px); }
         }
 
         .bloque-texto {
@@ -270,7 +330,7 @@
 
         .boton-reproductor:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(92, 20, 29, 0.4.5);
+            box-shadow: 0 8px 25px rgba(92, 20, 29, 0.45);
             background: linear-gradient(135deg, #701c26 0%, #3d050a 100%);
         }
 
@@ -317,6 +377,15 @@ Si esto te llega es porque al fin reuní un poco de coraje para ser un poquito m
 Así que voy a empezar a ejecutar mi plan...
 ...para encadenarte a mí.
 JAJAJAJAJA.</div>
+
+        <!-- SEPARADOR ADORNADO CON LIRIOS PARA LA CRONOLOGÍA -->
+        <div class="separador-cronologia">
+            <div class="linea-decorativa"></div>
+            <span class="flor-lirio">💮</span>
+            <h2>Nuestra Cronología</h2>
+            <span class="flor-lirio">💮</span>
+            <div class="linea-decorativa"></div>
+        </div>
 
         <!-- PARTE 2: EL COMIENZO (CRONOLOGÍA DESDE EL 05 DE MAYO) -->
         <div class="bloque-texto"><strong>DÍA 05 DE MAYO DE 2026</strong>
