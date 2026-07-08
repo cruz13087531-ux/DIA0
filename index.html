@@ -13,6 +13,7 @@
             --color-oro-sutil: #dfba6b;
             --color-rosa-romance: #fff0f2;
             --color-texto: #2c1a1c;
+            --color-guindo: #5c141d;
         }
 
         body {
@@ -137,7 +138,7 @@
             box-sizing: border-box;
         }
 
-        /* --- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO CON LIRIOS) --- */
+        /* --- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO CON LIRIOS GUINDOS) --- */
         .tarjeta-carta {
             background-color: #fffdfa;
             background-image: radial-gradient(rgba(240, 220, 220, 0.2) 1px, transparent 0);
@@ -165,25 +166,44 @@
             transform: translateY(0);
         }
 
-        /* --- ADORNOS DE LIRIOS EN ESQUINAS --- */
+        /* --- LIRIOS GUINDOS DE DECORACIÓN EN LOS BORDES --- */
         .tarjeta-carta::after {
             content: "⚜️";
             position: absolute;
-            bottom: 15px;
-            left: 20px;
-            font-size: 24px;
-            opacity: 0.3;
-            color: var(--color-oro-sutil);
+            bottom: 20px;
+            left: 25px;
+            font-size: 26px;
+            opacity: 0.6;
+            color: var(--color-guindo);
         }
 
         .tarjeta-carta::before {
             content: "⚜️";
             position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 24px;
-            opacity: 0.3;
-            color: var(--color-oro-sutil);
+            bottom: 20px;
+            right: 25px;
+            font-size: 26px;
+            opacity: 0.6;
+            color: var(--color-guindo);
+        }
+
+        /* Lirios guindos adicionales en los espacios vacíos laterales superiores */
+        .lirio-decorativo-izq {
+            position: absolute;
+            top: 40px;
+            left: 25px;
+            font-size: 26px;
+            opacity: 0.6;
+            color: var(--color-guindo);
+        }
+
+        .lirio-decorativo-der {
+            position: absolute;
+            top: 40px;
+            right: 25px;
+            font-size: 26px;
+            opacity: 0.6;
+            color: var(--color-guindo);
         }
 
         .corazon {
@@ -210,7 +230,7 @@
 
         /* --- SECCIÓN TITULO: NUESTRA CRONOLOGÍA --- */
         .separador-cronologia {
-            margin: 40px 0 25px 0;
+            margin: 45px 0 30px 0;
             position: relative;
             display: flex;
             align-items: center;
@@ -221,7 +241,7 @@
         .separador-cronologia h2 {
             font-family: 'Great Vibes', cursive;
             color: #7a1c28;
-            font-size: 42px;
+            font-size: 46px;
             margin: 0;
             font-weight: 400;
         }
@@ -232,9 +252,9 @@
             flex-grow: 1;
         }
 
-        .flor-lirio {
-            font-size: 22px;
-            color: var(--color-oro-sutil);
+        .flor-lirio-guindo {
+            font-size: 26px;
+            color: var(--color-guindo);
             vertical-align: middle;
             display: inline-block;
             animation: flotar 3s ease-in-out infinite;
@@ -357,6 +377,10 @@
 
     <!-- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO) -->
     <div class="tarjeta-carta" id="tarjeta-carta">
+        <!-- Lirios guindos decorativos superiores -->
+        <span class="lirio-decorativo-izq">⚜️</span>
+        <span class="lirio-decorativo-der">⚜️</span>
+
         <span class="corazon">❤️</span>
         <h1>Para Wendy</h1>
         
@@ -378,12 +402,12 @@ Así que voy a empezar a ejecutar mi plan...
 ...para encadenarte a mí.
 JAJAJAJAJA.</div>
 
-        <!-- SEPARADOR ADORNADO CON LIRIOS PARA LA CRONOLOGÍA -->
+        <!-- SEPARADOR ADORNADO CON LIRIOS GUINDOS -->
         <div class="separador-cronologia">
             <div class="linea-decorativa"></div>
-            <span class="flor-lirio">💮</span>
+            <span class="flor-lirio-guindo">⚜️</span>
             <h2>Nuestra Cronología</h2>
-            <span class="flor-lirio">💮</span>
+            <span class="flor-lirio-guindo">⚜️</span>
             <div class="linea-decorativa"></div>
         </div>
 
