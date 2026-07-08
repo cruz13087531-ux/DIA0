@@ -127,45 +127,6 @@
             box-sizing: border-box;
         }
 
-        /* --- NAVEGACIÓN POR TABS --- */
-        .contenedor-navegacion {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-            width: 100%;
-            max-width: 600px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.6s ease;
-        }
-
-        .contenedor-navegacion.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .boton-tab {
-            background: linear-gradient(135deg, var(--color-negro) 0%, var(--color-vino-oscuro) 100%);
-            color: var(--color-crema-rosa);
-            border: 2px solid var(--color-vino-claro);
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-
-        .boton-tab:hover, .boton-tab.activo {
-            background: var(--color-vino-claro);
-            border-color: #ffffff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.6);
-        }
-
         /* --- TARJETA PRINCIPAL --- */
         .tarjeta-carta {
             background-color: #ffffff;
@@ -187,14 +148,6 @@
             display: block;
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .seccion-contenido {
-            display: none;
-        }
-
-        .seccion-contenido.activa {
-            display: block;
         }
 
         .corazon {
@@ -324,20 +277,13 @@
         </div>
     </div>
 
-    <!-- BOTONES DE NAVEGACIÓN -->
-    <div class="contenedor-navegacion" id="navegacion">
-        <button class="boton-tab activo" onclick="cambiarTab(0)">✉️ Nota importante</button>
-        <button class="boton-tab" onclick="cambiarTab(1)">⏳ El comienzo</button>
-    </div>
-
     <!-- TARJETA PRINCIPAL -->
     <div class="tarjeta-carta" id="tarjeta-carta">
         <span class="corazon">❤️</span>
         <h1>Para Wendy</h1>
         
         <!-- PARTE 1: NOTA IMPORTANTE (ACTUALIZACIÓN) -->
-        <div id="sec-nota" class="seccion-contenido activa">
-            <div class="bloque-actualizacion"><strong>ACTUALIZACIÓN:</strong>
+        <div class="bloque-actualizacion"><strong>ACTUALIZACIÓN:</strong>
 Hola, Wendy.
 Antes de que empieces a leer todo esto, quiero decirte algo.
 Ya no quiero que esto se trate de una disculpa ni de intentar convencerte de algo. Tampoco quiero que pienses que hago todo esto para dar pena o para buscar que cambies de opinión.
@@ -349,16 +295,14 @@ No porque quiera presionarte.
 Simplemente porque cada uno de estos detalles los hice con muchísimo cariño. Porque, aunque las cosas hayan cambiado, el cariño que te tengo sigue siendo real... y el amor que siento por ti también. Eso no desaparece de un día para otro.
 Así que, si decides leer todo esto, solo quiero que sepas que cada palabra y cada detalle fueron hechos con mucho amor.</div>
 
-            <div class="bloque-texto">Hola Wendy, mi amor.
+        <div class="bloque-texto">Hola Wendy, mi amor.
 Si esto te llega es porque al fin reuní un poco de coraje para ser un poquito más egoísta con lo que quiero en mi vida... y yo quiero tenerte en mi vida.
 Así que voy a empezar a ejecutar mi plan...
 ...para encadenarte a mí.
 JAJAJAJAJA.</div>
-        </div>
 
         <!-- PARTE 2: EL COMIENZO (CRONOLOGÍA DESDE EL 05 DE MAYO) -->
-        <div id="sec-cronologia" class="seccion-contenido">
-            <div class="bloque-texto"><strong>DÍA 05 DE MAYO DE 2026</strong>
+        <div class="bloque-texto"><strong>DÍA 05 DE MAYO DE 2026</strong>
 Pues ese día realmente no pasó nada.
 Creo que te envié "Perfecta"... JAJAJAJA. Y sí, por error de dedo vi una de tus historias y terminé enviando eso. Fue completamente accidental.
 Tampoco le di tanta importancia porque, siendo sincero, yo no buscaba absolutamente nada con nadie. Incluso pensé que si me respondías puteándome por baboso, simplemente lo iba a aceptar. JAJAJAJA.
@@ -425,19 +369,17 @@ Y gracias por haberme acompañado en esas noches.
 De verdad...
 Muchas gracias.</div>
 
-            <!-- SECCIÓN MÚSICA DEDICADA -->
-            <div class="contenedor-musica">
-                <div class="titulo-musica">🎵 Una canción que me recuerda a ti</div>
-                <div class="dedicatoria-cancion">"Y esta canción me hace acordarme mucho de ti, porque me recuerda a cuando no sabía ni cómo responderte. Me daba miedo escribirte y aun así quería seguir conociéndote.
+        <!-- SECCIÓN MÚSICA DEDICADA -->
+        <div class="contenedor-musica">
+            <div class="titulo-musica">🎵 Una canción que me recuerda a ti</div>
+            <div class="dedicatoria-cancion">"Y esta canción me hace acordarme mucho de ti, porque me recuerda a cuando no sabía ni cómo responderte. Me daba miedo escribirte y aun así quería seguir conociéndote.
 Lo raro es que, mientras más te conocía, más ganas tenía de estar ahí para ti y ayudarte en lo que pudiera. Nunca pensé sentir algo así por alguien.
 Hasta ahora me cuesta creer lo camote que estoy de ti, pero si algo tengo claro es que todo lo que siento por ti siempre ha sido completamente sincero."</div>
-                
-                <!-- Reemplaza 'cancion_nueva.mp3' por tu archivo musical -->
-                <audio id="audioNuevaCarta" src="cancion_nueva.mp3"></audio>
-                <button class="boton-reproductor" onclick="controlarAudio('audioNuevaCarta')">
-                    <span id="icono-audioNuevaCarta">▶</span> &nbsp; Escuchar música
-                </button>
-            </div>
+            
+            <audio id="audioNuevaCarta" src="cancion_nueva.mp3"></audio>
+            <button class="boton-reproductor" onclick="controlarAudio('audioNuevaCarta')">
+                <span id="icono-audioNuevaCarta">▶</span> &nbsp; Escuchar música
+            </button>
         </div>
 
         <div class="firma">Con amor, Leonardo</div>
@@ -450,29 +392,9 @@ Hasta ahora me cuesta creer lo camote que estoy de ti, pero si algo tengo claro 
 
             setTimeout(() => {
                 document.getElementById('contenedor-sobre').style.display = 'none';
-                const navegacion = document.getElementById('navegacion');
                 const tarjeta = document.getElementById('tarjeta-carta');
-                navegacion.classList.add('visible');
                 tarjeta.classList.add('visible');
             }, 800);
-        }
-
-        function cambiarTab(indice) {
-            const tabs = document.querySelectorAll('.boton-tab');
-            const secciones = document.querySelectorAll('.seccion-contenido');
-            
-            // Pausar audio al cambiar de pestaña
-            document.querySelectorAll('audio').forEach(aud => {
-                aud.pause();
-                const icono = document.getElementById('icono-' + aud.id);
-                if (icono) icono.innerText = '▶';
-            });
-
-            tabs.forEach(tab => tab.classList.remove('activo'));
-            secciones.forEach(sec => sec.classList.remove('activa'));
-
-            tabs[indice].classList.add('activo');
-            secciones[indice].classList.add('activa');
         }
 
         function controlarAudio(idAudio) {
