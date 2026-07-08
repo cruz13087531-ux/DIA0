@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronología: Día 0</title>
+    <style>
+        :root {
+            --color-vino-oscuro: #2c050b;
+            --color-vino: #58111a;
+            --color-vino-claro: #722f37;
+            --color-negro: #0d0204;
+            --color-crema-rosa: #fdf5f6;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color-negro) 0%, var(--color-vino-oscuro) 50%, var(--color-negro) 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- SOBRE INTERACTIVO --- */
+        .contenedor-sobre {
+            perspective: 1000px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .frase-sobre-superior {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .sobre {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-color: var(--color-vino);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .sobre:hover {
+            transform: translateY(-5px);
+        }
+
+        .sobre::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 225px solid transparent;
+            border-right: 225px solid transparent;
+            border-bottom: 150px solid var(--color-vino-claro);
+            border-radius: 0 0 15px 15px;
+            z-index: 3;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 450px) {
+            .sobre::before {
+                border-left-width: calc(50vw - 20px);
+                border-right-width: calc(50vw - 20px);
+            }
+        }
+
+        .solapa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 225px solid transparent;
+            border-right: 225px solid transparent;
+            border-top: 130px solid var(--color-vino-oscuro);
+            transform-origin: top;
+            transition: transform 0.4s ease 0.2s, z-index 0.2s ease 0.2s;
+            z-index: 4;
+        }
+
+        @media (max-width: 450px) {
+            .solapa {
+                border-left-width: calc(50vw - 20px);
+                border-right-width: calc(50vw - 20px);
+            }
+        }
+
+        .sobre.abierto .solapa {
+            transform: rotateX(180deg);
+            z-index: 1;
+            transition: transform 0.4s ease, z-index 0.2s ease 0.2s;
+        }
+
+        .texto-sobre-interior {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            color: var(--color-crema-rosa);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            z-index: 5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        /* --- NAVEGACIÓN POR TABS (3 PARTES) --- */
+        .contenedor-navegacion {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 600px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+
+        .contenedor-navegacion.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .boton-tab {
+            background: linear-gradient(135deg, var(--color-negro) 0%, var(--color-vino-oscuro) 100%);
+            color: var(--color-crema-rosa);
+            border: 2px solid var(--color-vino-claro);
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .boton-tab:hover, .boton-tab.activo {
+            background: var(--color-vino-claro);
+            border-color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.6);
+        }
+
+        /* --- TARJETA PRINCIPAL --- */
+        .tarjeta-carta {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.9);
+            max-width: 600px;
+            width: 100%;
+            border: 4px solid var(--color-vino);
+            box-sizing: border-box;
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .tarjeta-carta.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .seccion-contenido {
+            display: none;
+        }
+
+        .seccion-contenido.activa {
+            display: block;
+        }
+
+        .corazon {
+            color: var(--color-vino-claro);
+            font-size: 45px;
+            animation: latido 1.3s infinite;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            color: var(--color-vino);
+            font-size: 28px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .bloque-texto {
+            color: var(--color-negro);
+            font-size: 16px;
+            line-height: 1.7;
+            text-align: left;
+            white-space: pre-line;
+            background-color: var(--color-crema-rosa);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--color-vino);
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* --- REPRODUCTOR DE MÚSICA PERSONALIZADO --- */
+        .contenedor-musica {
+            background: var(--color-crema-rosa);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed var(--color-vino-claro);
+            margin-top: 10px;
+        }
+
+        .titulo-musica {
+            color: var(--color-vino);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--color-vino);
+            padding-bottom: 8px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .dedicatoria-cancion {
+            color: #444444;
+            font-size: 14.5px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-style: italic;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            white-space: pre-line;
+            text-align: left;
+        }
+
+        .boton-reproductor {
+            background: linear-gradient(to right, #400a11, #1d0306);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background 0.3s ease;
+        }
+
+        .boton-reproductor:hover {
+            background: linear-gradient(to right, #500f17, #2c050b);
+        }
+
+        /* --- SECCIÓN: CARRETERA PARA EL AMOR DE MI VIDA --- */
+        .contenedor-carretera {
+            background: var(--color-crema-rosa);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed var(--color-vino-claro);
+        }
+
+        .titulo-carretera {
+            color: var(--color-vino);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--color-vino);
+            padding-bottom: 8px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .bloque-imagen {
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #d9c5c7;
+        }
+
+        .bloque-imagen:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 15px;
+        }
+
+        .imagen-proyecto {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .dedicatoria-imagen {
+            color: #444444;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-style: italic;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+
+        .texto-broma {
+            color: var(--color-negro);
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: left;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--color-vino-claro);
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .firma {
+            margin-top: 30px;
+            font-size: 15px;
+            color: var(--color-vino-claro);
+            font-weight: bold;
+            font-style: italic;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTENEDOR DEL SOBRE INICIAL -->
+    <div class="contenedor-sobre" id="contenedor-sobre">
+        <div class="frase-sobre-superior">"AHORA IGNORAME A VER....."</div>
+        <div class="sobre" id="sobre" onclick="abrirCarta()">
+            <div class="solapa"></div>
+            <div class="texto-sobre-interior">PARA EL AMOR DE MI VIDA</div>
+        </div>
+    </div>
+
+    <!-- BOTONES DE NAVEGACIÓN PARA LAS 3 SECCIONES ÚNICAS -->
+    <div class="contenedor-navegacion" id="navegacion">
+        <button class="boton-tab activo" onclick="cambiarTab(0)">❤️ Mi amor....</button>
+        <button class="boton-tab" onclick="cambiarTab(1)">🎵 Me siento asi...</button>
+        <button class="boton-tab" onclick="cambiarTab(2)">🚧 Una carretera para el amor de mi vida...</button>
+    </div>
+
+    <!-- TARJETA PRINCIPAL -->
+    <div class="tarjeta-carta" id="tarjeta-carta">
+        <span class="corazon">❤️</span>
+        <h1>Para Wendy</h1>
+        
+        <!-- PARTE 1: MI AMOR.... -->
+        <div id="sec-mi-amor" class="seccion-contenido activa">
+            <div class="bloque-texto">ACTUALIZACION(Hola, Wendy.
+Antes de que empieces a leer todo esto, quiero decirte algo.
+Ya no quiero que esto se trate de una disculpa ni de intentar convencerte de algo. Tampoco quiero que pienses que hago todo esto para dar pena o para buscar que cambies de opinión.
+La verdad es que estos detalles ya los tenía preparados desde hace varios días. De hecho, quería enviártelos el lunes y el martes, pero en mi estúpida cabecita primero quería sentir que estabas bien para recién empezar a mandártelos. Al final nunca encontré el momento.
+Y viendo cómo están las cosas ahora... siento que probablemente ya perdí todo. Tal vez sí. Tal vez no. Ya no lo sé.
+Pero aun así quiero que recibas esto.
+No porque espere algo de vuelta.
+No porque quiera presionarte.
+Simplemente porque cada uno de estos detalles los hice con muchísimo cariño. Porque, aunque las cosas hayan cambiado, el cariño que te tengo sigue siendo real... y el amor que siento por ti también. Eso no desaparece de un día para otro.
+Así que, si decides leer todo esto, solo quiero que sepas que cada palabra y cada detalle fueron hechos con mucho amor.)
+
+Hola Wendy, mi amor.
+Si esto te llega es porque al fin reuní un poco de coraje para ser un poquito más egoísta con lo que quiero en mi vida... y yo quiero tenerte en mi vida.
+Así que voy a empezar a ejecutar mi plan...
+...para encadenarte a mí.
+JAJAJAJAJA.</div>
+        </div>
+
+        <!-- PARTE 2: ME SIENTO ASI... -->
+        <div id="sec-me-siento" class="seccion-contenido">
+            <div class="bloque-texto">DÍA 05 DE MAYO DE 2026
+Pues ese día realmente no pasó nada.
+Creo que te envié "Perfecta"... JAJAJAJA. Y sí, por error de dedo vi una de tus historias y terminé enviando eso. Fue completamente accidental.
+Tampoco le di tanta importancia porque, siendo sincero, yo no buscaba absolutamente nada con nadie. Incluso pensé que si me respondías puteándome por baboso, simplemente lo iba a aceptar. JAJAJAJA.
+Lo curioso es que la primera interacción que tuvimos contigo fue justamente por una canción de José Madero.
+Ya antes me habías llamado un poco la atención, pero aun así no quería conocer a nadie. Estaba muy cómodo estando solo y prefería seguir así.
+
+Después llegó el 12 de mayo.
+Y ahí sí me asusté.
+Nadie comentaba mis historias... y apareciste tú.
+¿Y qué hice?
+Pues ignorarte.
+JAJAJAJA.
+No porque me cayeras mal.
+No porque no quisiera hablar contigo.
+Sino porque me daba miedo.
+Como ya te dije una vez, tenías una cara de emputada que imponía muchísimo. Tus ojos eran tan neutros que daban miedo. No transmitían si estabas feliz, seria o si estabas pensando cómo matar a alguien. JAJAJAJA.
+
+Cuando vi algunas fotos tuyas después de tu mensaje pensé:
+"Uy... qué miedo."
+Pero al mismo tiempo me pareció demasiado peculiar que alguien me escribiera justamente por mis gustos musicales.
+Eso despertó mi curiosidad.
+Y ahí apareció otro problema.
+No tenía idea de cómo responderte.
+Llevaba muchísimo tiempo solo, sin prácticamente ninguna interacción femenina.
+(Virgen).
+JAJAJAJA.
+
+Entonces no era que no quisiera hablar contigo...
+Era que literalmente no sabía cómo hacerlo.
+Además, estaba tan acostumbrado a estar solo que la idea de empezar a hablar con alguien me daba miedo.
+Pero hubo algo...
+Una corazonada.
+Y las pocas veces que les hago caso, normalmente no fallan.
+Así que me animé.
+Escribí lo que tenía que escribir.
+Y pensé:
+"Bueno... tal vez se vuelva mi amiga."
+(Aunque tú sabes perfectamente lo que pienso sobre eso. JAJAJA).
+
+Y aun así seguía dudando.
+Porque yo mismo decía:
+"¿Yo teniendo una amiga? No sé... no me veo. No estoy para darle atención a nadie."
+Pero esa corazonada pudo más.
+Y gracias a eso comenzamos a hablar el 13 de mayo.
+Aunque todavía tenía muchísimas dudas.
+Y así empezó lo que hoy es mi calvario...
+JAJAJAJA.
+No, mentira.
+
+Después me contaste parte de tu historia...
+Y yo estaba de:
+"ALV..."
+JAJAJAJA.
+Y en esas noches en las que nos hacíamos compañía, muchas veces tú me dabas las gracias por escucharte.
+Pero la verdad es que el agradecido era yo.
+Porque, aunque suene raro, esas noches también hicieron que yo dejara de sentirme tan solo.
+Me sentía acompañado.
+Y eso era algo que hacía muchísimo tiempo no me pasaba.
+Así que...
+Gracias.
+Gracias por escucharme.
+Gracias por dejarme escucharte.
+Y gracias por haberme acompañado en esas noches.
+De verdad...
+Muchas gracias.</div>
+
+            <div class="contenedor-musica">
+                <div class="titulo-musica">🎵 Una canción especial para este momento</div>
+                <div class="dedicatoria-cancion">"Y esta canción me hace acordarme mucho de ti, porque me recuerda a cuando no sabía ni cómo responderte. Me daba miedo escribirte y aun así quería seguir conociéndote.
+Lo raro es que, mientras más te conocía, más ganas tenía de estar ahí para ti y ayudarte en lo que pudiera. Nunca pensé sentir algo así por alguien.
+Hasta ahora me cuesta creer lo camote que estoy de ti, pero si algo tengo claro es que todo lo que siento por ti siempre ha sido completamente sincero."</div>
+                
+                <!-- Coloca el nombre de tu archivo mp3 para el día 0 aquí en src -->
+                <audio id="audioDia0" src="cancion_dia0.mp3"></audio>
+                <button class="boton-reproductor" onclick="controlarAudio('audioDia0', 0, 300)">
+                    <span id="icono-audioDia0">▶</span> &nbsp; Escuchar esta parte
+                </button>
+            </div>
+        </div>
+
+        <!-- PARTE 3: UNA CARRETERA PARA EL AMOR DE MI VIDA... -->
+        <div id="sec-carretera" class="seccion-contenido">
+            <div class="contenedor-carretera">
+                <div class="titulo-carretera">🚧 UNA CARRETERA PARA EL AMOR DE MI VIDA 🚧</div>
+                
+                <!-- IMAGEN 1 -->
+                <div class="bloque-imagen">
+                    <img src="imagen1.jpg" alt="Carretera 1" class="imagen-proyecto">
+                    <div class="dedicatoria-imagen">"Una carretera bien diseñada conecta destinos; tú conectaste mi presente con el futuro que quiero construir."</div>
+                </div>
+
+                <!-- IMAGEN 2 -->
+                <div class="bloque-imagen">
+                    <img src="imagen2.jpg" alt="Carretera 2" class="imagen-proyecto">
+                    <div class="dedicatoria-imagen">"Entre todas las secciones transversales que he dibujado, la única que de verdad quiero estudiar es el camino que me lleva a tu corazón."</div>
+                </div>
+
+                <!-- MENSAJE FINAL DE LA SECCIÓN -->
+                <div class="texto-broma">si lo hice jajajaj te paso el documneto ok no JJAJAJAJA y bueno wendy decirte que de verdad te amo mucho mi amor....</div>
+            </div>
+        </div>
+
+        <div class="firma">Con amor, Leonardo</div>
+    </div>
+
+    <script>
+        const estadosIniciales = {};
+
+        function abrirCarta() {
+            const sobre = document.getElementById('sobre');
+            sobre.classList.add('abierto');
+
+            setTimeout(() => {
+                document.getElementById('contenedor-sobre').style.display = 'none';
+                const navegacion = document.getElementById('navegacion');
+                const tarjeta = document.getElementById('tarjeta-carta');
+                navegacion.classList.add('visible');
+                tarjeta.classList.add('visible');
+            }, 800);
+        }
+
+        function cambiarTab(indice) {
+            const tabs = document.querySelectorAll('.boton-tab');
+            const secciones = document.querySelectorAll('.seccion-contenido');
+            
+            document.querySelectorAll('audio').forEach(aud => {
+                aud.pause();
+                const icono = document.getElementById('icono-' + aud.id);
+                if (icono) icono.innerText = '▶';
+            });
+
+            tabs.forEach(tab => tab.classList.remove('activo'));
+            secciones.forEach(sec => sec.classList.remove('activa'));
+
+            tabs[indice].classList.add('activo');
+            secciones[indice].classList.add('activa');
+        }
+
+        function controlarAudio(idAudio, tiempoInicio, tiempoFin) {
+            const audio = document.getElementById(idAudio);
+            const icono = document.getElementById('icono-' + idAudio);
+
+            if (audio.paused) {
+                if (!estadosIniciales[idAudio]) {
+                    audio.currentTime = tiempoInicio;
+                    estadosIniciales[idAudio] = true;
+                }
+                audio.play();
+                icono.innerText = '⏸';
+            } else {
+                audio.pause();
+                icono.innerText = '▶';
+            }
+
+            audio.ontimeupdate = () => {
+                if (audio.currentTime < tiempoInicio) {
+                    audio.currentTime = tiempoInicio;
+                }
+                if (audio.currentTime >= tiempoFin) {
+                    audio.pause();
+                    audio.currentTime = tiempoInicio;
+                    icono.innerText = '▶';
+                    estadosIniciales[idAudio] = false;
+                }
+            };
+        }
+    </script>
+</body>
+</html>
