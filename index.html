@@ -64,26 +64,28 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 450px;
+            max-width: 550px;
             z-index: 2;
             font-family: 'Montserrat', sans-serif;
         }
 
         .frase-sobre-superior {
             color: #ffffff;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 300;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 25px;
             text-align: center;
             text-shadow: 0 0 10px rgba(234, 190, 197, 0.6);
             text-transform: uppercase;
+            line-height: 1.5;
+            padding: 0 10px;
         }
 
         .sobre {
             position: relative;
             width: 100%;
-            height: 250px;
+            height: 280px;
             background: linear-gradient(135deg, #4a0d14 0%, #2e0509 100%);
             border-radius: 0 0 12px 12px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.4);
@@ -102,15 +104,15 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 0; height: 0;
-            border-left: 225px solid transparent;
-            border-right: 225px solid transparent;
-            border-bottom: 150px solid #5c141d;
+            border-left: 275px solid transparent;
+            border-right: 275px solid transparent;
+            border-bottom: 165px solid #5c141d;
             border-radius: 0 0 12px 12px;
             z-index: 3;
             box-sizing: border-box;
         }
 
-        @media (max-width: 450px) {
+        @media (max-width: 550px) {
             .sobre::before {
                 border-left-width: calc(50vw - 20px);
                 border-right-width: calc(50vw - 20px);
@@ -120,15 +122,15 @@
         .solapa {
             position: absolute;
             top: 0; left: 0; width: 0; height: 0;
-            border-left: 225px solid transparent;
-            border-right: 225px solid transparent;
-            border-top: 135px solid #250205;
+            border-left: 275px solid transparent;
+            border-right: 275px solid transparent;
+            border-top: 150px solid #250205;
             transform-origin: top;
             transition: transform 0.4s ease 0.1s, z-index 0.2s ease 0.1s;
             z-index: 4;
         }
 
-        @media (max-width: 450px) {
+        @media (max-width: 550px) {
             .solapa {
                 border-left-width: calc(50vw - 20px);
                 border-right-width: calc(50vw - 20px);
@@ -148,6 +150,7 @@
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
             animation: latidoSello 1.2s infinite;
             transition: opacity 0.3s ease;
+            bottom: 110px;
         }
 
         @keyframes latidoSello {
@@ -165,17 +168,16 @@
 
         .texto-sobre-interior {
             position: absolute;
-            bottom: 30px;
-            width: 100%;
+            bottom: 35px;
+            width: 90%;
+            left: 5%;
             text-align: center;
             color: var(--color-rosa-romance);
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 3px;
             z-index: 4;
             text-shadow: 0 2px 6px rgba(0,0,0,0.6);
             font-family: 'Great Vibes', cursive;
-            font-size: 28px;
+            font-size: 24px;
+            line-height: 1.4;
         }
 
         /* --- TARJETA PRINCIPAL --- */
@@ -405,7 +407,8 @@
 
         /* --- SECCIÓN GALERÍA DE IMÁGENES --- */
         .contenedor-galeria {
-            margin-top: 45px;
+            margin-top: 35px;
+            margin-bottom: 35px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -452,11 +455,11 @@
     <div class="corazones-fondo" id="corazones-fondo"></div>
 
     <div class="contenedor-sobre" id="contenedor-sobre">
-        <div class="frase-sobre-superior">Una historia que comenzó en silencio...</div>
+        <div class="frase-sobre-superior">una historio que comenzo por Jose Madero(que grande como lo agradezco ajjaja)</div>
         <div class="sobre" id="sobre" onclick="abrirCarta()">
             <div class="solapa"></div>
             <div class="sello-corazon">❤️</div>
-            <div class="texto-sobre-interior">Para mi niña hermosa</div>
+            <div class="texto-sobre-interior">Para el amor de mi vida.....(no pense estar tan camote de alguien odio esa debilidad porque ya sin ti no podre....)</div>
         </div>
     </div>
 
@@ -474,6 +477,7 @@
             <button class="pestana-boton" onclick="cambiarPestana(event, 'tab-cronologia')">📜 Nuestra Cronología</button>
         </div>
 
+        <!-- ================= PESTAÑA 1: TE AMO MUCHO ================= -->
         <div id="tab-te-amo" class="contenido-pestana activa">
             <div class="bloque-actualizacion">Hola, Wendy.
 Antes de que empieces a leer todo esto, quiero decirte algo.
@@ -491,9 +495,25 @@ Si esto te llega es porque al fin reuní un poco de coraje para ser un poquito m
 Así que voy a empezar a ejecutar mi plan...
 ...para encadenarte a mí.
 JAJAJAJAJA.</div>
+
+            <div class="contenedor-galeria">
+                <!-- Imagen 3 -->
+                <div class="bloque-imagen">
+                    <img src="imagen3.jpg" alt="Recuerdo Especial 1">
+                    <div class="pie-imagen">"quierenos no ves que Conor y Yo estamos sufriendo, él ya siente que se va a quedar sin mamá"</div>
+                </div>
+
+                <!-- Imagen 4 -->
+                <div class="bloque-imagen">
+                    <img src="imagen4.jpg" alt="Recuerdo Especial 2">
+                    <div class="pie-imagen">"Por si realmente estas abandonando a Conor y tambien a mi, jajaj bueno no mucho mi persona"</div>
+                </div>
+            </div>
+
             <div class="firma">Con todo mi amor, Leonardo</div>
         </div>
 
+        <!-- ================= PESTAÑA 2: NUESTRA CRONOLOGÍA ================= -->
         <div id="tab-cronologia" class="contenido-pestana">
             <div class="bloque-texto"><strong>DÍA 05 DE MAYO DE 2026</strong>
 Pues ese día realmente no pasó nada.
@@ -515,6 +535,7 @@ Como ya te dije una vez, tenías una cara de emputada que imponía muchísimo. T
 
 ...</div>
 
+            <!-- APARTADO MUSICAL CONFIGURADO (0:14 - 1:52) -->
             <div class="seccion-titulo-musica">💖 Cancion que sentia en esos dias 💖</div>
             <div class="subfrase-amor">para el amor de mi vida (porque wow no sabes que tan camote estoy de ti...)</div>
             
@@ -532,18 +553,6 @@ Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, 
                 <button class="boton-reproductor" onclick="controlarAudio('audioNuevaCarta')">
                     <span id="icono-audioNuevaCarta">▶</span> &nbsp; Escuchar nuestra canción
                 </button>
-            </div>
-
-            <div class="contenedor-galeria">
-                <div class="bloque-imagen">
-                    <img src="imagen3.jpg" alt="Recuerdo Especial 1">
-                    <div class="pie-imagen">"quierenos no ves que Conor y Yo estamos sufriendo, él ya siente que se va a quedar sin mamá"</div>
-                </div>
-
-                <div class="bloque-imagen">
-                    <img src="imagen4.jpg" alt="Recuerdo Especial 2">
-                    <div class="pie-imagen">"Por si realmente estas abandonando a Conor y tambien a mi, jajaj bueno no mucho mi persona"</div>
-                </div>
             </div>
 
             <div class="firma">Con todo mi amor, Leonardo</div>
@@ -599,7 +608,6 @@ Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, 
             const tiempoFin = 112;   // 1:52 en segundos (60 + 52)
 
             if (audio.paused) {
-                // Si el audio está al inicio o fuera del rango asignado, lo posicionamos en 0:14
                 if (audio.currentTime < tiempoInicio || audio.currentTime >= tiempoFin) {
                     audio.currentTime = tiempoInicio;
                 }
@@ -610,11 +618,10 @@ Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, 
                 icono.innerText = '▶';
             }
 
-            // Escuchamos el evento de actualización de tiempo para cortar en 1:52
             audio.ontimeupdate = function() {
                 if (audio.currentTime >= tiempoFin) {
                     audio.pause();
-                    audio.currentTime = tiempoInicio; // Reseteamos al punto inicial del bucle
+                    audio.currentTime = tiempoInicio;
                     icono.innerText = '▶';
                 }
             };
