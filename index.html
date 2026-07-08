@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para el amor de mi vida</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,500;1,300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
 
         :root {
             --color-amor-profundo: #1a0003;
@@ -18,7 +18,7 @@
 
         body {
             background: radial-gradient(circle at center, var(--color-terciopelo) 0%, var(--color-amor-profundo) 100%);
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,7 +37,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
             background-size: 240px 240px;
-            opacity: 0.15;
+            opacity: 0.12;
             pointer-events: none;
             z-index: 0;
         }
@@ -52,11 +52,12 @@
             width: 100%;
             max-width: 450px;
             z-index: 2;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .frase-sobre-superior {
             color: #ffffff;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 300;
             letter-spacing: 3px;
             margin-bottom: 25px;
@@ -138,24 +139,24 @@
             box-sizing: border-box;
         }
 
-        /* --- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO CON LIRIOS GUINDOS) --- */
+        /* --- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO ELEGANTE) --- */
         .tarjeta-carta {
             background-color: #fffdfa;
-            background-image: radial-gradient(rgba(240, 220, 220, 0.2) 1px, transparent 0);
+            background-image: radial-gradient(rgba(240, 220, 220, 0.15) 1px, transparent 0);
             background-size: 24px 24px;
-            padding: 50px 35px;
-            border-radius: 16px;
-            box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.8);
-            max-width: 620px;
+            padding: 60px 45px;
+            border-radius: 20px;
+            box-shadow: 0px 30px 75px rgba(0, 0, 0, 0.85);
+            max-width: 650px;
             width: 100%;
-            border: 1px solid rgba(223, 186, 107, 0.3);
-            outline: 8px solid rgba(255, 253, 250, 0.08);
+            border: 1px solid rgba(223, 186, 107, 0.35);
+            outline: 10px solid rgba(255, 253, 250, 0.06);
             box-sizing: border-box;
             text-align: center;
             display: none;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
             z-index: 1;
             position: relative;
         }
@@ -166,129 +167,101 @@
             transform: translateY(0);
         }
 
-        /* --- LIRIOS GUINDOS DE DECORACIÓN EN LOS BORDES --- */
-        .tarjeta-carta::after {
-            content: "⚜️";
+        /* --- DETALLES HERÁLDICOS / LIRIOS GUINDOS FIJOS --- */
+        .decoracion-esquina {
             position: absolute;
-            bottom: 20px;
-            left: 25px;
-            font-size: 26px;
-            opacity: 0.6;
+            font-size: 28px;
             color: var(--color-guindo);
+            opacity: 0.4;
         }
-
-        .tarjeta-carta::before {
-            content: "⚜️";
-            position: absolute;
-            bottom: 20px;
-            right: 25px;
-            font-size: 26px;
-            opacity: 0.6;
-            color: var(--color-guindo);
-        }
-
-        /* Lirios guindos adicionales en los espacios vacíos laterales superiores */
-        .lirio-decorativo-izq {
-            position: absolute;
-            top: 40px;
-            left: 25px;
-            font-size: 26px;
-            opacity: 0.6;
-            color: var(--color-guindo);
-        }
-
-        .lirio-decorativo-der {
-            position: absolute;
-            top: 40px;
-            right: 25px;
-            font-size: 26px;
-            opacity: 0.6;
-            color: var(--color-guindo);
-        }
+        .esquina-sup-izq { top: 25px; left: 30px; }
+        .esquina-sup-der { top: 25px; right: 30px; }
+        .esquina-inf-izq { bottom: 25px; left: 30px; }
+        .esquina-inf-der { bottom: 25px; right: 30px; }
 
         .corazon {
             color: #af2235;
-            font-size: 35px;
+            font-size: 32px;
             animation: latido 1.5s infinite;
             display: inline-block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         @keyframes latido {
             0% { transform: scale(1); }
-            30% { transform: scale(1.12); }
+            30% { transform: scale(1.1); }
             60% { transform: scale(1); }
         }
 
         h1 {
             font-family: 'Great Vibes', cursive;
             color: #4a0d14;
-            font-size: 52px;
-            margin: 0 0 10px 0;
+            font-size: 56px;
+            margin: 0 0 40px 0;
             font-weight: 400;
         }
 
-        /* --- SECCIÓN TITULO: NUESTRA CRONOLOGÍA --- */
-        .separador-cronologia {
-            margin: 45px 0 30px 0;
+        /* --- GRANDES SECCIONES REORGANIZADAS --- */
+        .apartado-carta {
+            margin: 50px 0 30px 0;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .separador-cronologia h2 {
+        .apartado-carta h2 {
             font-family: 'Great Vibes', cursive;
-            color: #7a1c28;
-            font-size: 46px;
+            color: var(--color-guindo);
+            font-size: 48px;
             margin: 0;
             font-weight: 400;
+            letter-spacing: 1px;
         }
 
-        .linea-decorativa {
+        .linea-romantica {
             height: 1px;
             background: linear-gradient(to right, transparent, var(--color-oro-sutil), transparent);
             flex-grow: 1;
         }
 
-        .flor-lirio-guindo {
-            font-size: 26px;
+        .lirio-icon {
+            font-size: 28px;
             color: var(--color-guindo);
-            vertical-align: middle;
             display: inline-block;
-            animation: flotar 3s ease-in-out infinite;
+            animation: balanceo Lirio 4s ease-in-out infinite;
         }
 
-        @keyframes flotar {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
-            100% { transform: translateY(0px); }
+        @keyframes balanceoLirio {
+            0% { transform: rotate(0deg) translateY(0px); }
+            50% { transform: rotate(5deg) translateY(-3px); }
+            100% { transform: rotate(0deg) translateY(0px); }
         }
 
         .bloque-texto {
             color: var(--color-texto);
-            font-size: 16px;
-            line-height: 1.8;
+            font-size: 17px;
+            line-height: 1.9;
             text-align: left;
             white-space: pre-line;
-            padding: 10px 5px;
-            margin-bottom: 30px;
+            padding: 0 10px;
+            margin-bottom: 35px;
             font-weight: 400;
         }
 
         .bloque-actualizacion {
             color: #4f3b3d;
-            font-size: 15.5px;
+            font-size: 16px;
             line-height: 1.8;
             text-align: left;
             white-space: pre-line;
             background-color: var(--color-rosa-romance);
-            padding: 25px;
-            border-radius: 12px;
-            border-right: 3px solid rgba(175, 34, 53, 0.3);
-            border-left: 3px solid rgba(175, 34, 53, 0.3);
-            margin-bottom: 35px;
+            padding: 28px;
+            border-radius: 14px;
+            border-right: 2px solid rgba(175, 34, 53, 0.25);
+            border-left: 2px solid rgba(175, 34, 53, 0.25);
+            margin-bottom: 40px;
             font-style: italic;
             box-shadow: 0 4px 15px rgba(234, 190, 197, 0.15);
         }
@@ -298,16 +271,16 @@
             background: #fff8f9;
             padding: 30px 25px;
             border-radius: 12px;
-            border: 1px solid rgba(223, 186, 107, 0.4);
-            margin-top: 40px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(223, 186, 107, 0.35);
+            margin-top: 50px;
             position: relative;
         }
 
         .titulo-musica {
+            font-family: 'Montserrat', sans-serif;
             color: #5c141d;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 25px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -316,26 +289,27 @@
 
         .dedicatoria-cancion {
             color: #443637;
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.8;
             margin-bottom: 25px;
             font-style: italic;
             background: #ffffff;
             padding: 20px;
             border-radius: 8px;
-            border-left: 2px solid var(--color-oro-sutil);
+            border-left: 3px solid var(--color-guindo);
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             white-space: pre-line;
             text-align: left;
         }
 
         .boton-reproductor {
+            font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #5c141d 0%, #2e0509 100%);
             color: #ffffff;
             border: none;
             width: 100%;
-            padding: 15px;
-            font-size: 15px;
+            padding: 16px;
+            font-size: 14px;
             font-weight: 500;
             letter-spacing: 1px;
             border-radius: 30px;
@@ -344,23 +318,23 @@
             justify-content: center;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 6px 20px rgba(92, 20, 29, 0.3);
+            box-shadow: 0 6px 20px rgba(92, 20, 29, 0.25);
             transition: all 0.3s ease;
         }
 
         .boton-reproductor:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(92, 20, 29, 0.45);
+            box-shadow: 0 8px 25px rgba(92, 20, 29, 0.4);
             background: linear-gradient(135deg, #701c26 0%, #3d050a 100%);
         }
 
         .firma {
             font-family: 'Great Vibes', cursive;
-            margin-top: 45px;
-            font-size: 38px;
+            margin-top: 50px;
+            font-size: 42px;
             color: #4a0d14;
             text-align: right;
-            padding-right: 10px;
+            padding-right: 5px;
         }
     </style>
 </head>
@@ -377,14 +351,24 @@
 
     <!-- TARJETA PRINCIPAL (ESTILO CARTA PERGAMINO) -->
     <div class="tarjeta-carta" id="tarjeta-carta">
-        <!-- Lirios guindos decorativos superiores -->
-        <span class="lirio-decorativo-izq">⚜️</span>
-        <span class="lirio-decorativo-der">⚜️</span>
+        <!-- Lirios guindos en las 4 esquinas de los espacios vacíos -->
+        <span class="decoracion-esquina esquina-sup-izq">⚜️</span>
+        <span class="decoracion-esquina esquina-sup-der">⚜️</span>
+        <span class="decoracion-esquina esquina-inf-izq">⚜️</span>
+        <span class="decoracion-esquina esquina-inf-der">⚜️</span>
 
         <span class="corazon">❤️</span>
         <h1>Para Wendy</h1>
         
-        <!-- PARTE 1: NOTA IMPORTANTE (ACTUALIZACIÓN) -->
+        <!-- ================= APARTADO 1 ================= -->
+        <div class="apartado-carta">
+            <div class="linea-romantica"></div>
+            <span class="lirio-icon">⚜️</span>
+            <h2>Te amo mucho</h2>
+            <span class="lirio-icon">⚜️</span>
+            <div class="linea-romantica"></div>
+        </div>
+
         <div class="bloque-actualizacion">Hola, Wendy.
 Antes de que empieces a leer todo esto, quiero decirte algo.
 Ya no quiero que esto se trate de una disculpa ni de intentar convencerte de algo. Tampoco quiero que pienses que hago todo esto para dar pena o para buscar que cambies de opinión.
@@ -402,16 +386,16 @@ Así que voy a empezar a ejecutar mi plan...
 ...para encadenarte a mí.
 JAJAJAJAJA.</div>
 
-        <!-- SEPARADOR ADORNADO CON LIRIOS GUINDOS -->
-        <div class="separador-cronologia">
-            <div class="linea-decorativa"></div>
-            <span class="flor-lirio-guindo">⚜️</span>
+
+        <!-- ================= APARTADO 2 ================= -->
+        <div class="apartado-carta">
+            <div class="linea-romantica"></div>
+            <span class="lirio-icon">⚜️</span>
             <h2>Nuestra Cronología</h2>
-            <span class="flor-lirio-guindo">⚜️</span>
-            <div class="linea-decorativa"></div>
+            <span class="lirio-icon">⚜️</span>
+            <div class="linea-romantica"></div>
         </div>
 
-        <!-- PARTE 2: EL COMIENZO (CRONOLOGÍA DESDE EL 05 DE MAYO) -->
         <div class="bloque-texto"><strong>DÍA 05 DE MAYO DE 2026</strong>
 Pues ese día realmente no pasó nada.
 Creo que te envié "Perfecta"... JAJAJAJA. Y sí, por error de dedo vi una de tus historias y terminé enviando eso. Fue completamente accidental.
