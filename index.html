@@ -407,7 +407,7 @@
 
         /* --- SECCIÓN GALERÍA DE IMÁGENES --- */
         .contenedor-galeria {
-            margin-top: 35px;
+            margin-top: 25px;
             margin-bottom: 35px;
             display: flex;
             flex-direction: column;
@@ -482,7 +482,7 @@
             <div class="bloque-actualizacion">Hola, Wendy.
 Antes de que empieces a leer todo esto, quiero decirte algo.
 Ya no quiero que esto se trate de una disculpa ni de intentar convencerte de algo. Tampoco quiero que pienses que hago todo esto para dar pena o para buscar que cambies de opinión.
-La verdad es que estos detalles ya los tenía preparados desde hace varios días. De hecho, quería enviártelos el lunes y el martes, pero en mi estúpida cabecita primero quería sentir que estabas bien para recién empezar a mandártelos. Al final nunca encontré el momento.
+La verdad es que estos detalles ya los tenía preparados desde hace varios días. De hecho, quería enviártelos el lunes y el martes, pero en mi estúpida cabecita primero quería sentir que estabas bien para recién empezar a mandártelos. AL final nunca encontré el momento.
 Y viendo cómo están las cosas ahora... siento que probablemente ya perdí todo. Tal vez sí. Tal vez no. Ya no lo sé.
 Pero aun así quiero que recibas esto.
 No porque espere algo de vuelta.
@@ -490,12 +490,7 @@ No porque quiera presionarte.
 Simplemente porque cada uno de estos detalles los hice con muchísimo cariño. Porque, aunque las cosas hayan cambiado, el cariño que te tengo sigue siendo real... y el amor que siento por ti también. Eso no desaparece de un día para otro.
 Así que, si decides leer todo esto, solo quiero que sepas que cada palabra y cada detalle fueron hechos con mucho amor.</div>
 
-            <div class="bloque-texto">Hola Wendy, mi amor.
-Si esto te llega es porque al fin reuní un poco de coraje para ser un poquito más egoísta con lo que quiero en mi vida... y yo quiero tenerte en mi vida.
-Así que voy a empezar a ejecutar mi plan...
-...para encadenarte a mí.
-JAJAJAJAJA.</div>
-
+            <!-- IMÁGENES COLOCADAS INMEDIATAMENTE DESPUÉS DEL PÁRRAFO SOLICITADO -->
             <div class="contenedor-galeria">
                 <!-- Imagen 3 -->
                 <div class="bloque-imagen">
@@ -509,6 +504,12 @@ JAJAJAJAJA.</div>
                     <div class="pie-imagen">"Por si realmente estas abandonando a Conor y tambien a mi, jajaj bueno no mucho mi persona"</div>
                 </div>
             </div>
+
+            <div class="bloque-texto">Hola Wendy, mi amor.
+Si esto te llega es porque al fin reuní un poco de coraje para ser un poquito más egoísta con lo que quiero en mi vida... y yo quiero tenerte en mi vida.
+Así que voy a empezar a ejecutar mi plan...
+...para encadenarte a mí.
+JAJAJAJAJA.</div>
 
             <div class="firma">Con todo mi amor, Leonardo</div>
         </div>
@@ -549,7 +550,8 @@ Lo increíble es que, mientras más te conocía, más ganas me daban de estar ah
 
 Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, pero si de algo estoy completamente seguro, es de que todo lo que siento por ti siempre ha sido y será el amor más sincero de mi vida."</div>
                 
-                <audio id="audioNuevaCarta" src="canción9.mp3"></audio>
+                <!-- CORRECCIÓN DE NOMBRE EN EL ORIGEN AUDIO -->
+                <audio id="audioNuevaCarta" src="cancion9.mp3" preload="auto"></audio>
                 <button class="boton-reproductor" onclick="controlarAudio('audioNuevaCarta')">
                     <span id="icono-audioNuevaCarta">▶</span> &nbsp; Escuchar nuestra canción
                 </button>
@@ -611,7 +613,10 @@ Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, 
                 if (audio.currentTime < tiempoInicio || audio.currentTime >= tiempoFin) {
                     audio.currentTime = tiempoInicio;
                 }
-                audio.play();
+                audio.play().catch(function(error) {
+                    console.log("Error de reproducción: ", error);
+                    alert("Asegúrate de tener el archivo con el nombre exacto 'cancion9.mp3' en la misma carpeta.");
+                });
                 icono.innerText = '⏸';
             } else {
                 audio.pause();
