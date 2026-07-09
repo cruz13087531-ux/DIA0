@@ -231,9 +231,19 @@
             font-family: 'Great Vibes', cursive;
             color: #4a0d14;
             font-size: 60px;
-            margin: 0 0 25px 0;
+            margin: 0 0 10px 0;
             font-weight: 400;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .encabezado-dia {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-rojo-pasion);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
         }
 
         /* --- SISTEMA DE PESTAÑAS --- */
@@ -471,6 +481,7 @@
 
         <span class="corazon-principal">💖</span>
         <h1>Para Wendy</h1>
+        <div class="encabezado-dia">Dia 0</div>
         
         <div class="contenedor-pestanas">
             <button class="pestana-boton activa" onclick="cambiarPestana(event, 'tab-te-amo')">❤️ Te amo mucho</button>
@@ -482,7 +493,7 @@
             <div class="bloque-actualizacion">Hola, Wendy.
 Antes de que empieces a leer todo esto, quiero decirte algo.
 Ya no quiero que esto se trate de una disculpa ni de intentar convencerte de algo. Tampoco quiero que pienses que hago todo esto para dar pena o para buscar que cambies de opinión.
-La verdad es que estos detalles ya los tenía preparados desde hace varios días. De hecho, quería enviártelos el lunes y el martes, pero en mi estúpida cabecita primero quería sentir que estabas bien para recién empezar a mandártelos. AL final nunca encontré el momento.
+La verdad es que estos detalles ya los tenía preparados desde hace varios días. De hecho, quería enviártelos el lunes y el martes, pero en mi estúpida cabecita primero quería sentir que estabas bien para recién empezar a mandártelos. Al final nunca encontré el momento.
 Y viendo cómo están las cosas ahora... siento que probablemente ya perdí todo. Tal vez sí. Tal vez no. Ya no lo sé.
 Pero aun así quiero que recibas esto.
 No porque espere algo de vuelta.
@@ -490,7 +501,6 @@ No porque quiera presionarte.
 Simplemente porque cada uno de estos detalles los hice con muchísimo cariño. Porque, aunque las cosas hayan cambiado, el cariño que te tengo sigue siendo real... y el amor que siento por ti también. Eso no desaparece de un día para otro.
 Así que, si decides leer todo esto, solo quiero que sepas que cada palabra y cada detalle fueron hechos con mucho amor.</div>
 
-            <!-- IMÁGENES COLOCADAS INMEDIATAMENTE DESPUÉS DEL PÁRRAFO SOLICITADO -->
             <div class="contenedor-galeria">
                 <!-- Imagen 3 -->
                 <div class="bloque-imagen">
@@ -542,15 +552,12 @@ Como ya te dije una vez, tenías una cara de emputada que imponía muchísimo. T
             
             <div class="contenedor-musica">
                 <div class="titulo-musica">🎵 Una melodía guardada para ti</div>
-                <div class="dedicatoria-cancion">"Nuestra historia comenzó de la forma más inesperada y hermosa: por una canción de José Madero. 
-
-Esta canción en particular me hace acordarme muchísimo de ti, porque me transporta directo a esos días cuando no sabía ni cómo responderte. Me daba un miedo tremendo escribirte y, aun así, por dentro se me morían las ganas de seguir conociéndote. 
+                <div class="dedicatoria-cancion">Esta canción en particular me hace acordarme muchísimo de ti, porque me transporta directo a esos días cuando no sabía ni cómo responderte. Me daba un miedo tremendo escribirte y, aun así, por dentro se me morían las ganas de seguir conociéndote. 
 
 Lo increíble es que, mientras más te conocía, más ganas me daban de estar ahí para ti, de cuidarte y ayudarte en lo que pudiera. Jamás en mi vida pensé llegar a sentir algo tan profundo por alguien. 
 
-Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, pero si de algo estoy completamente seguro, es de que todo lo que siento por ti siempre ha sido y será el amor más sincero de mi vida."</div>
+Hasta el día de hoy me cuesta creer lo increíblemente camote que estoy de ti, pero si de algo estoy completamente seguro, es de que todo lo que siento por ti siempre ha sido y será el amor más sincero de mi vida.</div>
                 
-                <!-- CORRECCIÓN DE NOMBRE EN EL ORIGEN AUDIO -->
                 <audio id="audioNuevaCarta" src="cancion9.mp3" preload="auto"></audio>
                 <button class="boton-reproductor" onclick="controlarAudio('audioNuevaCarta')">
                     <span id="icono-audioNuevaCarta">▶</span> &nbsp; Escuchar nuestra canción
